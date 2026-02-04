@@ -1,90 +1,159 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Generador de Resumen — Formato C</title>
-    <link rel="stylesheet" href="resumen.css">
+  <meta charset="UTF-8" />
+  <title>Generador de Resumen — Formato C</title>
+  <link rel="stylesheet" href="resumen.css" />
+  <style>
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+    .modal.hidden { display: none; }
+
+    .modal-card {
+      background: #fff;
+      width: 820px;
+      max-width: 95%;
+      border-radius: 10px;
+      padding: 20px 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.25);
+    }
+
+    .modal-card h3 {
+      margin-top: 0;
+      color: #006d7c;
+    }
+
+    .modal-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    .modal-row label {
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .modal-row input {
+      width: 100%;
+      padding: 6px;
+    }
+
+    .modal-card textarea {
+      width: 100%;
+      height: 160px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-top: 12px;
+    }
+
+    .btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary { background: #007c8a; color: #fff; }
+    .btn-secondary { background: #999; color: #fff; }
+    .btn-danger { background: #c0392b; color: #fff; }
+  </style>
 </head>
 
 <body>
-<header class="qs-main-header">
-    <div class="qs-header-left">
-        <img src="Quironsalud.png"
-             alt="QuirónSalud" class="qs-header-logo">
 
-        <span class="qs-header-title">Objetos Clínicos — QS Tools</span>
+<header class="qs-main-header">
+  <img src="Quironsalud.png" height="36">
+  <span>Objetos Clínicos — QS Tools</span>
+</header>
+
+<div class="container">
+  <h1>Generador de Resumen para Formulario</h1>
+
+  <label>Código del formulario:</label>
+  <input id="codigo">
+  <select id="entorno">
+    <option value="uat">UAT</option>
+    <option value="pro">PRO</option>
+  </select>
+  <button onclick="consultarFormulario()">Consultar</button>
+
+  <h2>Indicadores</h2>
+
+  <table id="tabla">
+    <thead>
+      <tr>
+        <th><input type="checkbox" id="selectAll"></th>
+        <th>Código</th>
+        <th>Texto</th>
+        <th>Tipo</th>
+        <th>Valores</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <label>
+    <input type="checkbox" id="modoImplantacion">
+    <strong>Modo implantación</strong> (crear / editar indicadores auxiliares)
+  </label>
+
+  <br><br>
+  <button onclick="generarResumen()">Generar resumen</button>
+
+  <h2>Resumen Formato C</h2>
+  <textarea id="resultado" rows="14"></textarea>
+
+  <button onclick="navigator.clipboard.writeText(resultado.value)">Copiar</button>
+  <button onclick="resultado.value=''">Limpiar</button>
+</div>
+
+<!-- MODAL AUX -->
+<div id="modalAux" class="modal hidden">
+  <div class="modal-card">
+    <h3>Indicador auxiliar (Lista multiselección)</h3>
+
+    <p><strong>Indicador origen:</strong> <span id="auxOrigen"></span></p>
+
+    <div class="modal-row">
+      <div style="flex:1">
+        <label>Código (máx 30)</label>
+        <input id="auxCodigo" maxlength="30">
+      </div>
+      <div style="flex:2">
+        <label>Descripción</label>
+        <input id="auxDescripcion">
+      </div>
     </div>
 
-    <nav class="qs-header-nav">
-        <a href="index.html">Inicio</a>
-        <a href="resumen.html">Resumen</a>
-        <a href="suma.html">Sumas</a>
-    </nav>
-</header>
-    <div class="container">
-        <h1>Generador de Resumen para Formulario </h1>
+    <label>Fórmula QS</label>
+    <textarea id="auxFormula"></textarea>
 
-        <label for="codigo">Código del Formulario:</label>
-        <input type="text" id="codigo" value="">
-        <button onclick="consultarFormulario()">Consultar</button>
+    <div id="auxEstado"></div>
 
-        <h2>Indicadores del Formulario</h2>
-
-<table id="tabla">
-<thead>
-  <select id="entorno">
-  <option value="uat">UAT</option>
-  <option value="pro">PRO</option>
-</select>
-
-  <tr>
-    <th>
-      <input type="checkbox" id="selectAll" title="Seleccionar todos">
-    </th>
-    <th>Código</th>
-    <th>Texto</th>
-    <th>Tipo</th>
-    <th>Valores</th>
-    <th>Editar</th>
-  </tr>
-</thead>
-  <tbody></tbody>
-</table>
-
-
-<button onclick="generarResumen()">Generar resumen</button>
-
-<div class="card">
-  <h4>Guardar fórmula en indicador</h4>
-
-  <label>Buscar indicador destino (FormulaTexto):</label>
-  <input
-    type="text"
-    id="buscarIndicador"
-    placeholder="Ej: UCP_ResumenF o Resumen"
-  />
-
-  <div id="listaIndicadores" class="lista-indicadores"></div>
-  <button id="btnValidarFormula">
-    Validar fórmula
-  </button>
-  <button id="btnGuardarFormula" disabled>
-    Guardar fórmula
-  </button>
-
-  <div id="estadoGuardado" class="status"></div>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="cerrarModalAux()">Cancelar</button>
+      <button class="btn btn-primary" onclick="validarAux()">Validar</button>
+      <button class="btn btn-primary" onclick="guardarAux()">Guardar</button>
+    </div>
+  </div>
 </div>
 
-
-<h2>Resumen Formato C</h2>
-<textarea id="resultado" rows="15"></textarea>
-
-<div class="row">
-  <button id="btnCopiarResumen">Copiar</button>
-  <button id="btnExportResumen">Exportar .txt</button>
-  <button id="btnLimpiarResumen">Limpiar</button>
-</div>
-    <footer class="footer-qs">© Quirón Salud — Herramientas QS - BETA</footer>
-    <script src="resumen.js"></script>
+<script src="resumen.js"></script>
 </body>
 </html>
