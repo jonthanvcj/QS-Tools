@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador de Resumen — Formato C</title>
+    <link rel="stylesheet" href="resumen.css">
+</head>
+
+<body>
+<header class="qs-main-header">
+    <div class="qs-header-left">
+        <img src="Quironsalud.png"
+             alt="QuirónSalud" class="qs-header-logo">
+
+        <span class="qs-header-title">Objetos Clínicos — QS Tools</span>
+    </div>
+
+    <nav class="qs-header-nav">
+        <a href="index.html">Inicio</a>
+        <a href="resumen.html">Resumen</a>
+        <a href="suma.html">Sumas</a>
+    </nav>
+</header>
+    <div class="container">
+        <h1>Generador de Resumen para Formulario </h1>
+
+        <label for="codigo">Código del Formulario:</label>
+        <input type="text" id="codigo" value="">
+        <button onclick="consultarFormulario()">Consultar</button>
+
+        <h2>Indicadores del Formulario</h2>
+
+<table id="tabla">
+<thead>
+  <select id="entorno">
+  <option value="uat">UAT</option>
+  <option value="pro">PRO</option>
+</select>
+
+  <tr>
+    <th>
+      <input type="checkbox" id="selectAll" title="Seleccionar todos">
+    </th>
+    <th>Código</th>
+    <th>Texto</th>
+    <th>Tipo</th>
+    <th>Valores</th>
+    <th>Editar</th>
+  </tr>
+</thead>
+  <tbody></tbody>
+</table>
+
+
+<button onclick="generarResumen()">Generar resumen</button>
+
+<div class="card">
+  <h4>Guardar fórmula en indicador</h4>
+
+  <label>Buscar indicador destino (FormulaTexto):</label>
+  <input
+    type="text"
+    id="buscarIndicador"
+    placeholder="Ej: UCP_ResumenF o Resumen"
+  />
+
+  <div id="listaIndicadores" class="lista-indicadores"></div>
+  <button id="btnValidarFormula">
+    Validar fórmula
+  </button>
+  <button id="btnGuardarFormula" disabled>
+    Guardar fórmula
+  </button>
+
+  <div id="estadoGuardado" class="status"></div>
+</div>
+
+
+<h2>Resumen Formato C</h2>
+<textarea id="resultado" rows="15"></textarea>
+
+<div class="row">
+  <button id="btnCopiarResumen">Copiar</button>
+  <button id="btnExportResumen">Exportar .txt</button>
+  <button id="btnLimpiarResumen">Limpiar</button>
+</div>
+    <footer class="footer-qs">© Quirón Salud — Herramientas QS - BETA</footer>
+    <script src="resumen.js"></script>
+</body>
+</html>

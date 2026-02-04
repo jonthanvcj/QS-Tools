@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Objetos Clínicos — QS Tools – Quirón Salud</title>
+     <link rel="stylesheet" href="index.css">
+</head>
+<script src="auth.js"></script>
+<script>
+  if (!checkAuth()) {
+    window.location.href = "login.html";
+  }
+</script>
+<body>
+<header>
+    <img src="Quironsalud.png" alt="Quirón Salud">
+    <h1>Objetos Clínicos — QS Tools</h1>
+</header>
+<div class="container">
+    <h2>Seleccione una herramienta</h2>
+    <p>Accede rápidamente al generador de resumen y al generador de sumas.</p>
+
+    <div class="card-box">
+        <div class="card">
+            <h3>📝 Generador de Resumen</h3>
+            <p>Crea automáticamente los textos resumen basados en indicadores QS.</p>
+            <a class="btn" href="resumen.html">Abrir herramienta</a>
+        </div>
+
+        <div class="card">
+            <h3>🧮 Generador de Sumas</h3>
+            <p>Construye fórmulas avanzadas: suma, multiplicación, condiciones, etc.</p>
+            <a class="btn" href="suma.html">Abrir herramienta</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    © Quirón Salud – Herramientas internas para formulación QS - BETA
+</footer>
+
+</body>
+</html>

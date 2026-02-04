@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Acceso — QS Tools</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<header>
+  <img src="Quironsalud.png" alt="Quirón Salud">
+  <h1>QS Tools</h1>
+</header>
+
+<div class="container">
+  <h2>Acceso a Objetos Clínicos</h2>
+
+  <label>Usuario</label><br>
+  <input type="text" id="usuario"><br><br>
+
+  <label>Contraseña</label><br>
+  <input type="password" id="password"><br><br>
+
+  <button onclick="entrar()">Entrar</button>
+
+  <p id="error" style="color:red;margin-top:15px;"></p>
+</div>
+
+<script src="auth.js"></script>
+<script>
+  function entrar() {
+    const usuario = document.getElementById("usuario").value;
+    const password = document.getElementById("password").value;
+
+    const ok = login(usuario, password);
+
+    if (!ok) {
+      document.getElementById("error").textContent =
+        "❌ Usuario o contraseña incorrectos";
+      return;
+    }
+
+    window.location.href = "index.html";
+  }
+</script>
+
+</body>
+</html>

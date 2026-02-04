@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Impacto del Formulario en la Implantación Clínica</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<header class="qs-header">
+  Impacto del Formulario en la Implantación Clínica
+</header>
+
+<div class="container">
+
+  <div class="busqueda">
+    <label>Código del formulario:</label>
+    <input id="codigoInput" />
+    <button id="btnBuscar">Buscar</button>
+    <p id="error" class="error hidden"></p>
+  </div>
+
+  <div id="cardFormulario" class="card hidden">
+    <h3>Formulario</h3>
+    <p><strong id="formCodigo"></strong></p>
+    <p>Tipo: <strong id="formTipo"></strong></p>
+  </div>
+
+  <div id="cardAviso" class="card aviso hidden"></div>
+
+  <div id="cardImpacto" class="card hidden">
+    <h3>Impacto clínico</h3>
+    <ul id="impactoLista"></ul>
+  </div>
+
+  <div id="cardPlanes" class="card hidden">
+    <h3>Planes clínicos detectados</h3>
+    <ul id="planesLista"></ul>
+  </div>
+
+</div>
+
+<script src="trayectorias.js"></script>
+</body>
+</html>
