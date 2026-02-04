@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Generador de Formula Sumas </title>
+  <link rel="stylesheet" href="suma.css" />
+</head>
+<body>
+<header class="qs-main-header">
+    <div class="qs-header-left">
+        <img src="Quironsalud.png"
+             alt="QuirónSalud" class="qs-header-logo">
+
+        <span class="qs-header-title">Objetos Clínicos — QS Tools</span>
+    </div>
+
+    <nav class="qs-header-nav">
+        <a href="index.html">Inicio</a>
+        <a href="resumen.html">Resumen</a>
+        <a href="suma.html">Sumas</a>
+    </nav>
+</header>
+
+<hr class="qs-header-line">
+
+  <div class="layout">
+      <div class="container">
+        <h1>Generador de Fórmula Sumas </h1>
+      </div>
+    <main>
+      <section class="left">
+        <div class="card">
+          <label>Buscar formulario por código:</label>
+          <div class="row">
+            <input id="codigo" placeholder="CODIGO_FORM" />
+            <button id="btnConsultar">Consultar</button>
+          </div>
+          <div class="status" id="status">Estado: sin cargar</div>
+        </div>
+
+        <div class="card">
+          <h3>Indicadores</h3>
+          <div class="select-all-container"><label><input type="checkbox" id="selectAllSumas">Seleccionar todos</label></div>
+         <div id="indicadoresList" class="indicadores-list">Cargar un formulario...</div>
+          <div class="hint">Selecciona los indicadores que quieres incluir en la operación</div>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="card">
+          <div class="row">
+            <label>Operación inicial</label>
+            <select id="operacion">
+              <option value="SUMA">SUMA</option>
+            </select>
+
+            <label>Modo</label>
+            <select id="modo">
+              <option value="Avanzado">Avanzado</option>
+              <option value="Simple">Simple</option>
+            </select>
+
+            <button id="generar">Generar fórmula</button>
+          </div>
+
+          <hr/>
+
+          <div class="transform-card">
+            <h4>Transformaciones posteriores (se aplican en orden)</h4>
+            <div id="transforms"></div>
+            <div class="row">
+              <select id="addTransformSelect">
+                <option value="multiplica">Multiplicar por</option>
+                <option value="divide">Dividir por</option>
+                <option value="suma">Sumar</option>
+                <option value="resta">Restar</option>
+              </select>
+              <input id="addTransformValue" placeholder="numero" />
+              <button id="addTransform">Añadir</button>
+            </div>
+            <div class="hint">Las transformaciones envuelven la fórmula (ej: multiplica(formula, x)).</div>
+          </div>
+
+          <hr/>
+
+          <div class="cond-card">
+            <h4>Condiciones avanzadas (SI anidados sobre el resultado)</h4>
+            <div id="conds"></div>
+
+            <div class="row">
+              <select id="cmpSelect">
+                <option value="menor">menor</option>
+                <option value="mayor">mayor</option>
+                <option value="igual">igual</option>
+                <option value="menorigual">menorigual</option>
+                <option value="mayorigual">mayorigual</option>
+                <option value="distinto">distinto</option>
+              </select>
+              <input id="cmpValue" placeholder="umbral (numero o texto)" />
+              <input id="cmpTextYes" placeholder='Texto si cumple (ej: "Bajo")' />
+              <input id="cmpTextNo" placeholder='Texto si NO cumple (opcional)' />
+              <button id="addCond">Añadir condición</button>
+            </div>
+            <div class="hint">Las condiciones se anidan en el orden que las añades. Si rellenas "Texto si NO cumple" se usará como else final.</div>
+          </div>
+
+        </div>
+
+        <div class="card preview">
+          <h4>Previsualización / Resultado</h4>
+          <textarea id="preview" rows="10"></textarea>
+          <div class="row">
+            <button id="btnCopiar">Copiar</button>
+            <button id="btnExport">Exportar .txt</button>
+            <button id="btnLimpiar">Limpiar</button>
+          </div>
+        </div>
+
+        <div class="card tips">
+          <h4>Ayuda rápida</h4>
+          <ul>
+            <li>La función <code>suma</code> debe anidarse en pares: <code>suma(a,b)</code>.</li>
+            <li>Listas → <code>caso($$COD$$,val,"texto",...)</code> (el generador usa el id del valor).</li>
+            <li>Hora → <code>hazhora(hora($$COD$$),minuto($$COD$$))</code> cuando se necesite.</li>
+            <li>Las transformaciones envuelven la fórmula (multiplica, divide, suma, resta).</li>
+            <li>Las condiciones comparan el resultado final (si quieres comparar otro dato, pídemelo).</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer class="footer-qs">© Quirón Salud — Herramientas QS - BETA</footer>
+  <script src="suma.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+/* ========================================
+   ESTILO UNIFICADO QUIRÓNSALUD
+   Para páginas: suma.html
+======================================== */
+
+:root {
+    --q-blue-900: #003f5c;
+    --q-blue-700: #00678a;
+    --q-blue-500: #0096c7;
+
+    --bg-light: #e9fbfc;
+    --text: #063447;
+    --muted: #6b7a85;
+
+    --radius: 10px;
+    --shadow: 0 4px 14px rgba(0,0,0,0.15);
+
+    --card-bg: #ffffff;
+}
+
+/* ======== GLOBAL ======== */
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg-light);
+    color: var(--text);
+}
+
+/* ======== LAYOUT GENERAL ======== */
+
+.layout {
+    max-width: 1200px;
+    margin: 26px auto;
+    padding: 18px;
+}
+
+/* ======== TARJETAS / PANEL ======== */
+
+.card {
+    background: var(--card-bg);
+    padding: 18px;
+    margin-bottom: 16px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* ======== HEADER ======== */
+
+header h1 {
+    font-size: 22px;
+    color: var(--q-blue-900);
+    margin-bottom: 8px;
+}
+
+/* ======== ELEMENTOS ======== */
+
+input, select {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #bcd7df;
+    background: white;
+    color: var(--text);
+    font-size: 14px;
+}
+
+button {
+    background: var(--q-blue-700);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+button:hover {
+    background: var(--q-blue-500);
+}
+
+/* ======== LISTA DE INDICADORES ======== */
+
+.indicadores-list {
+    max-height: 420px;
+    overflow-y: auto;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #d4e7ef;
+    background: #f8feff;
+}
+
+/* cada ítem */
+.indicador-item {
+    padding: 8px;
+    border-bottom: 1px dashed #d1e4eb;
+}
+
+.indicador-meta {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* ======== PREVIEW ======== */
+
+.preview textarea {
+    width: 100%;
+    min-height: 180px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #bcd7df;
+    background: white;
+    resize: vertical;
+    color: var(--text);
+}
+
+/* ======== FOOTER ======== */
+
+.footer-qs {
+    margin-top: 40px;
+    padding: 15px;
+    text-align: center;
+    background: var(--q-blue-900);
+    color: white;
+    font-size: 14px;
+    border-radius: 8px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+/* ===== CABECERA QUIRÓNSAÑUD (igual a index) ===== */
+
+.qs-main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    background: #ffffff;
+}
+
+.qs-header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.qs-header-logo {
+    height: 70px;
+}
+
+.qs-header-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #006d77; /* turquesa profesional QuirónSalud */
+}
+
+.qs-header-line {
+    border: none;
+    border-top: 3px solid #009fb7; /* turquesa de tu captura */
+    margin: 0;
+}
+
+.qs-header-nav a {
+    margin-left: 18px;
+    font-size: 16px;
+    color: #006d77;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.qs-header-nav a:hover {
+    text-decoration: underline;
+}
+.container {
+    background: var(--card-bg);
+    width: 85%;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+h1, h2 {
+    color: var(--q-blue-900);
+    font-weight: 700;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}

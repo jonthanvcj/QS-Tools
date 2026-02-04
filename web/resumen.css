@@ -1,0 +1,206 @@
+:root {
+    --q-blue-900: #003f5c;
+    --q-blue-700: #00678a;
+    --q-blue-500: #0096c7;
+
+    --bg-light: #e9fbfc;
+    --text: #063447;
+    --muted: #6b7a85;
+
+    --radius: 10px;
+    --shadow: 0 4px 14px rgba(0,0,0,0.15);
+
+    --card-bg: #ffffff;
+}
+body {
+    background: var(--bg-light);
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--text);
+}
+
+.container {
+    background: var(--card-bg);
+    width: 85%;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+/* TITULOS */
+
+h1, h2 {
+    color: var(--q-blue-900);
+    font-weight: 700;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* TABLA  */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+th, td {
+    border: 1px solid #d7e7ee;
+    padding: 8px;
+}
+
+th {
+    background: #f0f9fc;
+    color: var(--q-blue-900);
+    font-weight: 600;
+}
+
+/*  BOTONES  */
+
+button, .btn-resumen {
+    background: var(--q-blue-700);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+button:hover {
+    background: var(--q-blue-500);
+}
+
+/* ENTRADAS */
+
+input[type="text"], select {
+    border: 1px solid #bcd7df;
+    padding: 8px 10px;
+    border-radius: 6px;
+    width: 220px;
+    background: white;
+    color: var(--text);
+}
+
+/* TEXTAREA  */
+
+textarea {
+    width: 100%;
+    min-height: 180px;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #bcd7df;
+    font-size: 14px;
+    resize: vertical;
+}
+
+/* FOOTER CORPORATIVO  */
+
+.footer-qs {
+    margin-top: 40px;
+    padding: 15px;
+    text-align: center;
+    background: var(--q-blue-900);
+    color: white;
+    font-size: 14px;
+    border-radius: 8px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+
+/* ===== CABECERA QUIRÓNSAÑUD (igual a index) ===== */
+
+.qs-main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    background: #ffffff;
+}
+
+.qs-header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.qs-header-logo {
+    height: 70px;
+}
+
+.qs-header-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #006d77; /* turquesa profesional QuirónSalud */
+}
+
+.qs-header-line {
+    border: none;
+    border-top: 3px solid #009fb7; /* turquesa de tu captura */
+    margin: 0;
+}
+
+.qs-header-nav a {
+    margin-left: 18px;
+    font-size: 16px;
+    color: #006d77;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.qs-header-nav a:hover {
+    text-decoration: underline;
+}
+
+.lista-indicadores {
+  border: 1px solid #ccc;
+  max-height: 180px;
+  overflow-y: auto;
+  margin: 8px 0;
+}
+
+.indicador-destino {
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.indicador-destino:hover {
+  background: #eef5ff;
+}
+
+.indicador-destino.selected {
+  background: #0066cc;
+  color: white;
+}
+
+.hint {
+  padding: 6px;
+  color: #777;
+}
+.lista-indicadores {
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.item-indicador {
+  padding: 6px;
+  cursor: pointer;
+}
+
+.item-indicador:hover {
+  background: #eef6ff;
+}
+
+
